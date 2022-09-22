@@ -1,11 +1,10 @@
 # net.art
-A collection of small projects created to try out various web technologies.
-The catalogue page is available at [man90.gitlab.io/net.art](https://man90.gitlab.io/net.art/)
+A collection of small projects created out of boredom.
 
-## Technologies used:
-* Catalogue page: HTML + CSS
-* pingme: HTML Canvas
-* metronome: HTML Canvas + [glitch-canvas](https://github.com/snorpey/glitch-canvas)
+* eyes: No link
+* metronome: [man90.gitlab.io/net.art/metronome](https://man90.gitlab.io/net.art/metronome)
+* pingme: [man90.gitlab.io/net.art/pingme](https://man90.gitlab.io/net.art/pingme)
+* vengeance: [genshin.hemlo.cc/vengeance](https://genshin.hemlo.cc/vengeance)
 
 ## Assets
-All used assets belong to their owners.
+All assets used belong to their respective owners.

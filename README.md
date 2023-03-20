@@ -1,10 +1,5 @@
 # net.art
-A collection of small projects created out of boredom.
-
-* eyes: No link
-* metronome: [man90.gitlab.io/net.art/metronome](https://man90.gitlab.io/net.art/metronome)
-* pingme: [man90.gitlab.io/net.art/pingme](https://man90.gitlab.io/net.art/pingme)
-* vengeance: [genshin.hemlo.cc/vengeance](https://genshin.hemlo.cc/vengeance)
+A collection of small projects created out of boredom or for other reason. None of them deserve a separate repo.
 
 ## Assets
 All assets used belong to their respective owners.

@@ -1,19 +1,8 @@
 html,
 body,
 main {
-	align-items: center;
-	display: flex;
-	flex-direction: column;
 	height: 100%;
-	justify-content: center;
-	margin: 0;
-	position: relative;
-	width: 100%;
-}
-
-select {
-	padding: 0.5rem 1rem;
-	z-index: 1;
+	overflow: hidden;
 }
 
 .bubble {
@@ -22,7 +11,7 @@ select {
 	display: block;
 	height: 10px;
 	position: absolute;
-	transition-duration: 5s;
+	transition-duration: 1s;
 	transition-timing-function: ease-out;
 	width: 10px;
 }

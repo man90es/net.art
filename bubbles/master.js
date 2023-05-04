@@ -2,51 +2,65 @@ function rng(min, max) {
 	return Math.random() * (max - min) + min
 }
 
-function setPosition(b, [x, y], variant) {
-	if (variant === "lefttop") {
-		b.style.left = x + "px"
-		b.style.top = y + "px"
-	} else if (variant === "translate") {
-		b.style.transform = `translate(${x + "px"}, ${y + "px"})`
-	}
+function setPosition(b, [x, y]) {
+	b.style.left = x + "px"
+	b.style.top = y + "px"
 }
 
 (() => {
-	let variant = ""
-	const bubbles = Array.from({ length: 5e3 })
-		.map(() => {
-			const b = document.createElement("div")
-			const size = Math.round(rng(5, 15))
+	let mousePos = [0, 0]
+	let area = Math.min(window.innerWidth, window.innerHeight) / 5
+	let spawning = false
 
-			b.classList.add("bubble")
-			b.style.backgroundColor = "#" + Math.round(rng(0, 16777215)).toString(16)
-			b.style.height = size + "px"
-			b.style.width = size + "px"
+	function createBubble() {
+		const b = document.createElement("div")
+		const size = Math.round(rng(5, 15))
 
-			document.body.appendChild(b)
-			return b
-		})
+		b.classList.add("bubble")
+		b.style.backgroundColor = "#" + Math.round(rng(0, 16777215)).toString(16)
+		b.style.height = size + "px"
+		b.style.width = size + "px"
 
-	document.querySelector("select").addEventListener("change", ({ target }) => {
-		variant = target.value
+		setPosition(
+			b,
+			[
+				rng(mousePos[0] - area, mousePos[0] + area),
+				rng(mousePos[1] - area, mousePos[1] + area),
+			],
+		)
 
-		bubbles.forEach((b) => {
-			b.style.left = "0px"
-			b.style.top = "0px"
-			b.style.transform = ""
-		})
+		document.body.appendChild(b)
+		return b
+	}
+
+	let bubbles = Array.from({ length: 100 }).map(createBubble)
+
+	document.body.addEventListener("mousemove", ({ clientX, clientY }) => {
+		mousePos = [clientX, clientY]
 	})
 
+	document.body.addEventListener("mousedown", () => {
+		spawning = true
+	})
+
+	document.body.addEventListener("mouseup", () => {
+		spawning = false
+	})
+
+	let bubbleI = 0
 	setInterval(() => {
-		bubbles.forEach((b) => {
-			setPosition(
-				b,
-				[
-					rng(0, window.innerWidth - 10),
-					rng(0, window.innerHeight - 10),
-				],
-				variant,
-			)
-		})
-	}, 1e3)
+		setPosition(
+			bubbles[bubbleI],
+			[
+				rng(mousePos[0] - area, mousePos[0] + area),
+				rng(mousePos[1] - area, mousePos[1] + area),
+			],
+		)
+
+		bubbleI = (bubbleI + 1) % bubbles.length
+	}, 1)
+
+	setInterval(() => {
+		bubbles.push(createBubble())
+	}, 1e2)
 })()
